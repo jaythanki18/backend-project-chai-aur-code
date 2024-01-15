@@ -51,6 +51,7 @@ const userSchema = new Schema(
   }
 )
 
+// Methods: It checks whether password is modified or not just before the 'Save' event if Password is modified then it will hash the modified password 
 userSchema.pre("save", async function (next) {
   if(!this.isModified("password")) return next();
 
