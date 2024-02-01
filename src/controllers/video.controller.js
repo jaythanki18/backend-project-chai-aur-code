@@ -2,7 +2,6 @@ import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { deleteFromCloudinary, uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js"
-import fs from 'fs'
 import { Video } from "../models/video.model.js";
 import mongoose, { isValidObjectId } from "mongoose";
 import { User } from "../models/user.model.js";
@@ -117,7 +116,7 @@ const publishAVideo = asyncHandler(async (req, res) => {
 
     const videoUpload = await Video.findById(video._id);
 
-    if (!videoUploded) {
+    if (!videoUpload) {
       throw new ApiErrors(500, "Video uploading is failed! Try again... ");
    }
 
